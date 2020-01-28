@@ -1,0 +1,66 @@
+.groups-page-info {
+	margin-bottom:20px;
+	padding: 0 20px 10px 20px;
+	background:#f0ffff;
+	border: solid 1px #bbb;
+	border-radius:5px;
+	}
+@if $list_mode == 'true' {
+	/* changes to groups list */
+
+	.groups-boxes {
+		display: inline;
+		.group-box {
+			margin: 0 0 5px 0;
+			.group-avatar-flair .avatar-flair {
+				height:unset;
+				width:unset;
+			}
+			.group-description {
+				margin-left: 20px;
+				float: left;
+				max-height: 20px;
+                overflow: hidden;
+			}
+			.group-membership {
+				float: left;
+				padding: 0 20px 0 0;
+				min-width:80px;
+			}
+			.group-box-inner {
+				display: inline;
+				padding: 5px 10px;
+				.group-user-count {
+					/*display:none;*/
+					float:left;
+				}
+				.group-info-wrapper {
+					float:left;
+					margin-right: 15px;
+					.group-info {
+						margin: 0;
+					}
+					.group-avatar-flair {
+						margin-top: 0;
+					}
+				}
+			}
+		}
+	}
+	.group-index-join, .group-index-leave, .group-index-request {
+		padding: 2px 6px 3px 6px;
+		min-height: 24px;
+	}
+	.group-index-join.btn {
+		background:#90f090;
+	}
+	.group-index-request.btn {
+		background:#7090f0;
+		color:#fff;
+		.d-icon {
+			color:#fff;
+		}
+	}
+/* end if list_mode */
+}
+
