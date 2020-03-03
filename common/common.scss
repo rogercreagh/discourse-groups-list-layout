@@ -2,6 +2,7 @@
 	margin-bottom:20px;
 	padding: 0 20px 10px 20px;
 	background:#f0ffff;
+	color:#000080;
 	border: solid 1px #bbb;
 	border-radius:5px;
 	}
@@ -18,8 +19,9 @@
 			}
 			.group-description {
 				margin-left: 20px;
-				float: left;
-				max-height: 20px;
+				height: 20px;
+				white-space:nowrap;
+				text-overflow:ellipsis;
                 overflow: hidden;
 			}
 			.group-membership {
@@ -33,6 +35,7 @@
 				.group-user-count {
 					/*display:none;*/
 					float:left;
+					margin-right:15px;
 				}
 				.group-info-wrapper {
 					float:left;
