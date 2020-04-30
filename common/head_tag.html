@@ -2,25 +2,36 @@
 {{#d-section pageClass="groups"}}
   <div class="groups-header">
     {{#if currentUser.admin}}
-      {{d-button action=(action "new")
-          class="btn-default groups-header-new pull-right"
-          icon="plus"
-          label="admin.groups.new.title"}}
+      {{d-button
+        action=(action "new")
+        class="btn-default groups-header-new pull-right"
+        icon="plus"
+        label="admin.groups.new.title"
+      }}
     {{/if}}
 
     <div class="groups-header-filters">
-      {{text-field value=filterInput
-          placeholderKey="groups.index.all"
-          class="groups-header-filters-name no-blur"}}
+      {{input
+        value=(readonly filter)
+        placeholderKey="groups.index.all"
+        class="groups-header-filters-name no-blur"
+        input=(action "onFilterChanged" value="target.value")
+      }}
 
-      {{combo-box value=type
-                  content=types
-                  clearable=true
-                  allowAutoSelectFirst=false
-                  noneLabel="groups.index.filter"
-                  class="groups-header-filters-type"}}
+      {{combo-box
+        value=type
+        content=types
+        class="groups-header-filters-type"
+        onChange=(action (mut type))
+        options=(hash
+          clearable=true
+          none="groups.index.filter"
+          default="public"
+        )
+      }}
     </div>
   </div>
+  
   {{#if themeSettings.about_groups_text}}
     <div class="groups-page-info">
     <p>{{themeSettings.about_groups_text}}</p>
@@ -38,12 +49,12 @@
   
   {{plugin-outlet name="after-groups-header" args=(hash group=model)}}
 
-  {{#if model}}
-    {{#conditional-loading-spinner condition=model.loading}}
+  {{#if groups}}
+    {{#conditional-loading-spinner condition=isLoading}}
       {{#load-more selector=".groups-boxes .group-box" action=(action "loadMore")}}
         <div class='container'>
           <div class="groups-boxes">
-            {{#each model as |group|}}
+            {{#each groups as |group|}}
               {{#link-to "group.members" group.name class="group-box"}}
                 <div class="group-box-inner">
                   <div class="group-info-wrapper">
